@@ -1,6 +1,1 @@
-venv/
-.idea/
-algorithms/
-*.in
-*.out
-*.pdf
+.vscode/
