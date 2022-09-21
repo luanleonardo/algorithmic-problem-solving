@@ -1,8 +1,8 @@
+# https://www.hackerrank.com/challenges/2d-array/problem
+
 from sys import stdin, stdout
 
-arr = []
-for _ in range(6):
-    arr.append(list(map(int, stdin.readline().rstrip().split(" "))))
+arr = [list(map(int, stdin.readline().rstrip().split(" "))) for _ in range(6)]
 
 highest_sum = float("-inf")
 for i in range(1, 5):
