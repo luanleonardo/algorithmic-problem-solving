@@ -10,7 +10,7 @@ class SegmentTree:
         self.n = len(arr)
         self.N = (2 << ceil(log2(n))) - 1
         self.INF = INF
-        self.tree = [INF] * (self.N)
+        self.tree = [self.INF] * (self.N)
         self.lazy = [0] * (self.N)
         self._build(0, 0, self.n - 1)
 
