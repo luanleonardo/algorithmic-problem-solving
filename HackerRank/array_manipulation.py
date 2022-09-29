@@ -1,5 +1,6 @@
 # https://www.hackerrank.com/challenges/crush/
 
+from math import ceil, log2
 from sys import stdin, stdout
 
 
@@ -7,29 +8,32 @@ class SegmentTree:
     def __init__(self, arr, INF=float("-inf")):
         self.arr = arr
         self.n = len(arr)
-        self.N = 1
-        while self.N < self.n:
-            self.N *= 2
-        self.N = 2 * self.N - 1
+        self.N = (2 << ceil(log2(n))) - 1
         self.INF = INF
         self.tree = [INF] * (self.N)
         self.lazy = [0] * (self.N)
         self._build(0, 0, self.n - 1)
+
+    def _left(self, node):
+        return (node << 1) + 1
+
+    def _right(self, node):
+        return (node << 1) + 2
 
     def _build(self, node, l, r):
         if l == r:
             self.tree[node] = self.arr[l]
             return
         mid = (l + r) // 2
-        self._build(2 * node + 1, l, mid)
-        self._build(2 * node + 2, mid + 1, r)
-        self.tree[node] = max(self.tree[2 * node + 1], self.tree[2 * node + 2])
+        self._build(self._left(node), l, mid)
+        self._build(self._right(node), mid + 1, r)
+        self.tree[node] = max(self.tree[self._left(node)], self.tree[self._right(node)])
 
     def _lazy_propagation(self, node, tl, tr):
         self.tree[node] += self.lazy[node]
         if tl != tr:
-            self.lazy[2 * node + 1] += self.lazy[node]
-            self.lazy[2 * node + 2] += self.lazy[node]
+            self.lazy[self._left(node)] += self.lazy[node]
+            self.lazy[self._right(node)] += self.lazy[node]
         self.lazy[node] = 0
 
     def _update(self, node, tl, tr, l, r, v):
@@ -48,9 +52,9 @@ class SegmentTree:
             return
 
         mid = (tl + tr) // 2
-        self._update(2 * node + 1, tl, mid, l, r, v)
-        self._update(2 * node + 2, mid + 1, tr, l, r, v)
-        self.tree[node] = max(self.tree[2 * node + 1], self.tree[2 * node + 2])
+        self._update(self._left(node), tl, mid, l, r, v)
+        self._update(self._right(node), mid + 1, tr, l, r, v)
+        self.tree[node] = max(self.tree[self._left(node)], self.tree[self._right(node)])
 
     def update(self, l, r, v):
         return self._update(0, 0, self.n - 1, l, r, v)
@@ -70,8 +74,8 @@ class SegmentTree:
 
         mid = (tl + tr) // 2
         return max(
-            self._query(2 * node + 1, tl, mid, l, r),
-            self._query(2 * node + 2, mid + 1, tr, l, r),
+            self._query(self._left(node), tl, mid, l, r),
+            self._query(self._right(node), mid + 1, tr, l, r),
         )
 
     def query(self, l, r):
