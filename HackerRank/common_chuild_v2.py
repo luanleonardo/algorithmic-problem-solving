@@ -7,7 +7,7 @@ from sys import stdin, stdout
 def lcs_length(x, y):
     m = len(x)
     n = len(y)
-    c = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    c = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             if x[i - 1] == y[j - 1]:
