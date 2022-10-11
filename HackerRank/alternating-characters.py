@@ -7,13 +7,13 @@ def alternatingCharacters(s):
     if n == 1:
         return 0
 
-    lv = alternatingCharacters(s[: n // 2])
-    rv = alternatingCharacters(s[n // 2 :])
+    l = alternatingCharacters(s[: n // 2])
+    r = alternatingCharacters(s[n // 2 :])
 
     if s[: n // 2][-1] == s[n // 2 :][0]:
-        return lv + rv + 1
+        return l + r + 1
 
-    return lv + rv
+    return l + r
 
 
 q = int(stdin.readline().rstrip())
