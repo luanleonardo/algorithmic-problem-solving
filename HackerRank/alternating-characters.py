@@ -1,3 +1,4 @@
+# https://www.hackerrank.com/challenges/alternating-characters/
 from sys import stdin, stdout
 
 
