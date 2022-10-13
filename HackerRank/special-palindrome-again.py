@@ -1,5 +1,6 @@
 # https://www.hackerrank.com/challenges/special-palindrome-again/
 
+from collections import Counter
 from sys import stdin, stdout
 
 
@@ -18,10 +19,14 @@ def get_special_palindromic_substrings(s):
         left, right = center, center
         while left >= 0 and right < len(s) and s[left] == s[right]:
             palindrome = unpad(s[left : right + 1])
-            if s[left] != "!" and len(set(palindrome)) <= 2:
+            c = Counter(palindrome)
+            if len(c) > 2 or (len(c) == 2 and min(c.values()) > 1):
+                break
+            if s[left] != "!":
                 palindromes.append(palindrome)
             left -= 1
             right += 1
+
     return palindromes
 
 
