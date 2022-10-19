@@ -16,9 +16,6 @@ def maximumToys(prices, k):
 if __name__ == "__main__":
 
     n, k = map(int, stdin.readline().rstrip().split())
-
     prices = list(map(int, stdin.readline().rstrip().split()))
-
     result = maximumToys(prices, k)
-
     stdout.write(f"{result}\n")
