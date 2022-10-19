@@ -4,13 +4,12 @@ from sys import stdin, stdout
 
 
 def maximumToys(prices, k):
+    total_price = 0
     sorted_prices = sorted(prices)
-    total_price, max_num_toys = 0, 0
-    for price in sorted_prices:
-        if total_price + price <= k:
-            total_price += price
-            max_num_toys += 1
-
+    for max_num_toys, price in enumerate(sorted_prices):
+        if total_price + price > k:
+            break
+        total_price += price
     return max_num_toys
 
 
