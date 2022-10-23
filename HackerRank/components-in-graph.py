@@ -33,8 +33,7 @@ if __name__ == "__main__":
         g[v].append(u)
 
     ccs = connected_components(g, 2 * n)
-    smallest_sizes = float("inf")
-    largest_sizes = float("-inf")
+    smallest_sizes, largest_sizes = float("inf"), float("-inf")
     for cc_id, cc in ccs.items():
         if len(cc) == 1:
             continue
