@@ -33,15 +33,15 @@ if __name__ == "__main__":
         g[v].append(u)
 
     ccs = connected_components(g, 2 * n)
-    smallest_sizes, largest_sizes = float("inf"), float("-inf")
+    smallest_size, largest_size = float("inf"), float("-inf")
     for cc_id, cc in ccs.items():
         if len(cc) == 1:
             continue
 
-        if len(cc) < smallest_sizes:
-            smallest_sizes = len(cc)
+        if len(cc) < smallest_size:
+            smallest_size = len(cc)
 
-        if largest_sizes < len(cc):
-            largest_sizes = len(cc)
+        if largest_size < len(cc):
+            largest_size = len(cc)
 
-    stdout.write(f"{smallest_sizes} {largest_sizes}\n")
+    stdout.write(f"{smallest_size} {largest_size}\n")
