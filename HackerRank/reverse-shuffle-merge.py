@@ -1,35 +1,45 @@
 # https://www.hackerrank.com/challenges/reverse-shuffle-merge
+# ref: https://youtu.be/TrgIeae3m5A
 
-from collections import Counter, deque
 from sys import stdin, stdout
 
 
-def lexicographically_smallest_subsequence(s, k):
-    n = len(s)
-    ans = deque()
-    for i, c in enumerate(s):
-        while ans and c < ans[-1] and (len(ans) - 1 + n - i >= k):
-            ans.pop()
-        if not ans or len(ans) < k:
-            ans.append(c)
-    return "".join(ans)
-
-
-def longest_anagram_subsequence(s1, s2):
-    cs1 = Counter(s1)
-    cs2 = Counter(s2)
-    ans = 0
-    for i in cs1:
-        ans += min(cs1[i], cs2[i])
-    return ans
+# Complete the reverseShuffleMerge function below.
+def reverseShuffleMerge(s):
+    s = list(reversed(s))
+    remaining_dict, required_dict, added_dict = {}, {}, {}
+    for c in s:
+        if c not in remaining_dict:
+            remaining_dict[c] = 1
+        else:
+            remaining_dict[c] += 1
+    for key, value in remaining_dict.items():
+        required_dict[key] = value // 2
+        added_dict[key] = 0
+    char_list = []
+    index = 0
+    min_index = 0
+    min_char = "|"
+    while index < len(s):
+        char = s[index]
+        if required_dict[char] > added_dict[char]:
+            if char < min_char:
+                min_char = char
+                min_index = index
+            if remaining_dict[char] - 1 < required_dict[char] - added_dict[char]:
+                while index > min_index:
+                    index -= 1
+                    char = s[index]
+                    remaining_dict[char] += 1
+                added_dict[char] += 1
+                char_list.append(char)
+                min_char = "|"
+        remaining_dict[char] -= 1
+        index += 1
+    return "".join(char_list)
 
 
 if __name__ == "__main__":
-    # s = stdin.readline().rstrip()
-    s = 'abdecf'
-    print(s, len(s))
-    k = len(s) // 2
-    s1, s2 = s[:k], s[k:]
-    print(s1, s2)
-    ans = longest_anagram_subsequence(s1, s2)
-    print(ans)
+    s = stdin.readline().rstrip()
+    ans = reverseShuffleMerge(s)
+    stdout.write(f"{ans}\n")
