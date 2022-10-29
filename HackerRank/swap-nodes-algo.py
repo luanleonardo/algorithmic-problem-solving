@@ -12,33 +12,33 @@ class Node:
 
 
 def in_order_traversal(root):
-    q = deque([root])
+    stack = deque([root])
     visited = set()
     result = []
-    while q:
-        node = q.pop()
+    while stack:
+        node = stack.pop()
         if node is None:
             continue
         if node.value in visited:
             result.append(node.value)
             continue
         visited.add(node.value)
-        q.append(node.right)
-        q.append(node)
-        q.append(node.left)
+        stack.append(node.right)
+        stack.append(node)
+        stack.append(node.left)
     return " ".join(map(str, result))
 
 
 def swap_children(root, k):
-    q = deque([(root, 1)])
-    while q:
-        node, level = q.popleft()
+    queue = deque([(root, 1)])
+    while queue:
+        node, level = queue.popleft()
         if node is None:
             continue
         if level % k == 0:
             node.left, node.right = node.right, node.left
-        q.append((node.left, level + 1))
-        q.append((node.right, level + 1))
+        queue.append((node.left, level + 1))
+        queue.append((node.right, level + 1))
 
 
 if __name__ == "__main__":
