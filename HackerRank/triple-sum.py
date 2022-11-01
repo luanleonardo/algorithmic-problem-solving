@@ -3,7 +3,7 @@
 from sys import stdin, stdout
 
 
-def find_subarray_less_than_key(array, key):
+def count_values_less_than_or_equal_to_key(array, key):
     l = 0
     m = len(array) // 2
     r = len(array) - 1
@@ -15,7 +15,7 @@ def find_subarray_less_than_key(array, key):
             l = m + 1
         else:
             break
-    return len(array[:m]) if key < array[m] else len(array[: m + 1])
+    return m if key < array[m] else m + 1
 
 
 if __name__ == "__main__":
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     answer = 0
     for mid_value in b:
-        res1 = find_subarray_less_than_key(array=a, key=mid_value)
-        res2 = find_subarray_less_than_key(array=c, key=mid_value)
+        res1 = count_values_less_than_or_equal_to_key(array=a, key=mid_value)
+        res2 = count_values_less_than_or_equal_to_key(array=c, key=mid_value)
         answer += res1 * res2
     stdout.write(f"{answer}\n")
