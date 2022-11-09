@@ -1,17 +1,23 @@
-# https://www.hackerrank.com/challenges/ctci-is-binary-search-tree
+# https://www.hackerrank.com/challenges/is-binary-search-tree/
+
+""" Node is defined as
+class node:
+  def __init__(self, data):
+      self.data = data
+      self.left = None
+      self.right = None
+"""
 
 
-def _checkBST(node, min_value, max_value):
-    if node is None:
+def _check_binary_search_tree(root, min, max):
+    if root is None:
         return True
-
-    if node.data <= min_value or node.data >= max_value:
+    if root.data <= min or max <= root.data:
         return False
+    check_left_tree = _check_binary_search_tree(root.left, min=min, max=root.data)
+    check_right_tree = _check_binary_search_tree(root.right, min=root.data, max=max)
+    return check_left_tree and check_right_tree
 
-    check_left_subtree = _checkBST(node.left, min_value, node.data)
-    check_right_subtree = _checkBST(node.right, node.data, max_value)
-    return check_left_subtree and check_right_subtree
 
-
-def checkBST(root):
-    return _checkBST(root, float("-inf"), float("inf"))
+def check_binary_search_tree_(root):
+    return _check_binary_search_tree(root, min=float("-inf"), max=float("inf"))
