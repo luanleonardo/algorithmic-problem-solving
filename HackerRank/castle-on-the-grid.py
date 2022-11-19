@@ -13,19 +13,16 @@ def nearbyLocationsOnTheGrid(grid, free, start):
             nearbyLocations.append(Location(start.row, column))
         else:
             break
-
     for row in range(start.row - 1, -1, -1):
         if grid[row][start.column] == free:
             nearbyLocations.append(Location(row, start.column))
         else:
             break
-
     for column in range(start.column + 1, width):
         if grid[start.row][column] == free:
             nearbyLocations.append(Location(start.row, column))
         else:
             break
-
     for row in range(start.row + 1, height):
         if grid[row][start.column] == free:
             nearbyLocations.append(Location(row, start.column))
