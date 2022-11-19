@@ -7,13 +7,30 @@ Location = namedtuple("Location", ["row", "column"])
 def nearbyLocationsOnTheGrid(grid, free, start):
     height = len(grid)
     width = len(grid[0])
-    nearbyLocations = [
-        Location(start.row + i, start.column + j)
-        for i, j in [(0, -1), (-1, 0), (0, 1), (1, 0)]
-        if 0 <= start.row + i < height
-        and 0 <= start.column + j < width
-        and grid[start.row + i][start.column + j] == free
-    ]
+    nearbyLocations = []
+    for column in range(start.column - 1, -1, -1):
+        if grid[start.row][column] == free:
+            nearbyLocations.append(Location(start.row, column))
+        else:
+            break
+
+    for row in range(start.row - 1, -1, -1):
+        if grid[row][start.column] == free:
+            nearbyLocations.append(Location(row, start.column))
+        else:
+            break
+
+    for column in range(start.column + 1, width):
+        if grid[start.row][column] == free:
+            nearbyLocations.append(Location(start.row, column))
+        else:
+            break
+
+    for row in range(start.row + 1, height):
+        if grid[row][start.column] == free:
+            nearbyLocations.append(Location(row, start.column))
+        else:
+            break
     return nearbyLocations
 
 
@@ -74,6 +91,4 @@ if __name__ == "__main__":
     goal = Location(goalX, goalY)
 
     # print result
-    minimumMoves(grid, ".", start, goal)
-    print(f"start = {start}")
-    print(f"goal = {goal}")
+    stdout.write(f"{minimumMoves(grid, '.', start, goal)}\n")
