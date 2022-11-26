@@ -166,7 +166,7 @@ def node_to_path(node: Node[T]) -> List[T]:
     given node.
     """
     path: List[T] = [node.state]
-    while node.parent is not None:
+    while node.parent:
         node = node.parent
         path.append(node.state)
     path.reverse()

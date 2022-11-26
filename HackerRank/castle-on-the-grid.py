@@ -1,3 +1,5 @@
+# https://www.hackerrank.com/challenges/castle-on-the-grid/
+
 from collections import deque, namedtuple
 from sys import stdin, stdout
 
@@ -54,7 +56,7 @@ def BFS(grid, free, start, goal):
 
 def pathToGoal(node):
     reversedPath = [node.state]
-    while node.parent is not None:
+    while node.parent:
         node = node.parent
         reversedPath.append(node.state)
     return reversedPath[::-1]
