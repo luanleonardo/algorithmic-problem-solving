@@ -21,6 +21,7 @@ class LinkedList:
         return self.next.insertAtEnd(value)
 
 
+# O(m + n) time | O(1) space
 def _mergeLinkedLists(headOne, headTwo):
     if headOne.next is None:
         headOne.next = headTwo
