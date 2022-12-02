@@ -11,7 +11,7 @@ class LinkedList:
 
     def __str__(self):
         if self.next is None:
-            return f"{self.value}"
+            return f"{self.value} -> NULL"
         return f"{self.value} -> {self.next}"
 
     def insertAtEnd(self, value):
@@ -28,8 +28,11 @@ def _mergeLinkedLists(headOne, headTwo):
         return headOne
 
     prev = headOne
-    curr = headOne.next if headOne.next.value <= headTwo.value else headTwo
-    currMax = headTwo if headOne.next.value <= headTwo.value else headOne.next
+    curr, currMax = (
+        (headOne.next, headTwo)
+        if headOne.next.value <= headTwo.value
+        else (headTwo, headOne.next)
+    )
     prev.next = curr
 
     while True:
@@ -54,18 +57,13 @@ def mergeLinkedLists(headOne, headTwo):
 
 
 if __name__ == "__main__":
-    headOne = LinkedList(2)
-    headOne.insertAtEnd(6)
+    headOne = LinkedList(1)
+    headOne.insertAtEnd(3)
     headOne.insertAtEnd(7)
-    headOne.insertAtEnd(8)
     print(headOne)
 
-    headTwo = LinkedList(1)
-    headTwo.insertAtEnd(3)
+    headTwo = LinkedList(3)
     headTwo.insertAtEnd(4)
-    headTwo.insertAtEnd(5)
-    headTwo.insertAtEnd(9)
-    headTwo.insertAtEnd(10)
     print(headTwo)
 
-    print(mergeLinkedLists(headTwo, headOne))
+    print(mergeLinkedLists(headOne, headTwo))
