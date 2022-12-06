@@ -4,13 +4,13 @@
 class UnionFind:
     def __init__(self, n) -> None:
         self.size = [None] + [1] * n
-        self.root = [None] + list(range(1, n + 1))
+        self.parent = [None] + list(range(1, n + 1))
 
     def find(self, p):
-        if self.root[p] == p:
+        if self.parent[p] == p:
             return p
-        self.root[p] = self.find(self.root[p])
-        return self.root[p]
+        self.parent[p] = self.find(self.parent[p])
+        return self.parent[p]
 
     def union(self, p, q):
         p = self.find(p)
@@ -19,7 +19,7 @@ class UnionFind:
             return
         if self.size[p] > self.size[q]:
             p, q = q, p
-        self.root[p] = q
+        self.parent[p] = q
         self.size[q] += self.size[p]
 
 
