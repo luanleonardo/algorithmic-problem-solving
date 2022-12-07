@@ -6,33 +6,26 @@ from itertools import combinations
 from sys import stdin, stdout
 
 
-def dijkstra(graph, source, sink):
-    """
-    implement Dijkstra algorithm on the graph to find the shortest path
-    :param graph: a python dictionary representing the graph structure
-    :param source: starting vertex
-    :param sink: end vertex
-    :return: shortest length, path from source to sink
-    """
-    queue = [(0, source, ())]
-    visited = set()
-    mins = {source: 0}
-    while queue:
-        (cost, vertex, path) = heappop(queue)
-        if vertex in visited:
+def dijkstra(graph, source, destination):
+    frontier = [(0, source, ())]
+    explored = set()
+    min_costs = {source: 0}
+    while frontier:
+        (cost, current_node, path) = heappop(frontier)
+        if current_node in explored:
             continue
 
-        visited.add(vertex)
-        path += (vertex,)
-        if vertex == sink:
+        explored.add(current_node)
+        path += (current_node,)
+        if current_node == destination:
             return cost, path
 
-        for head, edge_cost in graph.get(vertex, ()):
-            curr_cost = mins.get(head, None)
+        for neighbor, edge_cost in graph.get(current_node, ()):
+            current_cost = min_costs.get(neighbor, None)
             new_cost = cost + edge_cost
-            if curr_cost is None or new_cost < curr_cost:
-                mins[head] = new_cost
-                heappush(queue, (new_cost, head, path))
+            if current_cost is None or new_cost < current_cost:
+                min_costs[neighbor] = new_cost
+                heappush(frontier, (new_cost, neighbor, path))
 
     return float("inf"), None
 
