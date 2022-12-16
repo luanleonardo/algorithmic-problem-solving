@@ -1,13 +1,14 @@
 # https://www.hackerrank.com/challenges/ctci-fibonacci-numbers/
 from sys import stdin, stdout
 
+
 # O(n) time | O(1) space
 def fibonacci(n):
     if n < 2:
         return n
 
     a, b = 0, 1
-    for _ in range(1, n):
+    for _ in range(2, n + 1):
         a, b = b, a + b
 
     return b
