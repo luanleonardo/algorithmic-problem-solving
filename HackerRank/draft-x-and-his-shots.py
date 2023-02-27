@@ -40,13 +40,13 @@ def intervals_containing(t, p):
 
     retval = intervals_containing(t.left, p) + intervals_containing(t.right, p)
     if p < t.center:
-        j = bisect_right(t.by_low, p, key=lambda t: t[0])
-        for i in range(j):
-            retval.append(t.by_low[i][1])
+        i = bisect_right(t.by_low, p, key=lambda t: t[0])
+        for k in range(i):
+            retval.append(t.by_low[k][1])
     else:
         i = bisect_left(t.by_high, p, key=lambda t: t[0])
-        for j in range(i, len(t.by_high)):
-            retval.append(t.by_high[j][1])
+        for k in range(i, len(t.by_high)):
+            retval.append(t.by_high[k][1])
     return retval
 
 
