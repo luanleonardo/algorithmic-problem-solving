@@ -3,10 +3,10 @@
 
 # O(n) time | O(1) space, n  = array length
 def isValidSubsequence(array, sequence):
+    i = 0
     for e in sequence:
         try:
-            i = array.index(e)
-            array = array[i + 1:]
+            i += array[i:].index(e) + 1
         except ValueError:
             return False
     return True
