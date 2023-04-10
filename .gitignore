@@ -8,3 +8,4 @@ problems_ads/
 *.txt
 *.zip
 .idea/
+.coverage
