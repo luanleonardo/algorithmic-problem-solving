@@ -26,13 +26,21 @@ class Node:
     #     return array
 
     # O(v + e) time | O(v) space, v = number of vertices, e = number of edges
-    def depthFirstSearch(self, array, explored=None):
-        if explored is None:
-            explored = set()
+    # def depthFirstSearch(self, array, explored=None):
+    #     if explored is None:
+    #         explored = set()
+    #     array.append(self.name)
+    #     explored.add(id(self))
+    #     for child in self.children:
+    #         if id(child) in explored:
+    #             continue
+    #         child.depthFirstSearch(array, explored)
+    #     return array
+
+    # O(v + e) time | O(v) space, v = number of vertices, e = number of edges
+    def depthFirstSearch(self, array):
+        """DFS for a connected acyclic undirected graph."""
         array.append(self.name)
-        explored.add(id(self))
         for child in self.children:
-            if id(child) in explored:
-                continue
-            child.depthFirstSearch(array, explored)
+            child.depthFirstSearch(array)
         return array
