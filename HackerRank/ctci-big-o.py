@@ -3,6 +3,7 @@
 from math import sqrt
 from sys import stdin, stdout
 
+
 # O(sqrt(n)) time | O(1) space
 def primality(n):
     if n == 1:

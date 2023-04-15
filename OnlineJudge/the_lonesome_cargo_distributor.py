@@ -1,6 +1,5 @@
 from sys import stdin, stdout
 
-
 if __name__ == "__main__":
 
     SET = int(stdin.readline().rstrip())
@@ -35,7 +34,9 @@ if __name__ == "__main__":
                     time_spent += 1
                     cargo_carrier.append(cargo_station[i].pop(0))
 
-                if cargo_carrier or any(station != [] for station in cargo_station):
+                if cargo_carrier or any(
+                    station != [] for station in cargo_station
+                ):
                     time_spent += 2
                 else:
                     break

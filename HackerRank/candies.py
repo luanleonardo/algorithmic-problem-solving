@@ -2,6 +2,7 @@
 
 from sys import stdin, stdout
 
+
 # O(n) time | O(n) space
 def candies(n, rating):
     candies = [1] * n

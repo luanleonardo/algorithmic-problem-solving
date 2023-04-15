@@ -11,7 +11,9 @@ def maximum_subarray_sum_mod_m(arr, m):
     prefix_sums_mod_m = sorted(prefix_sums_mod_m)
     max_seen = prefix_sums_mod_m[-1][0]
 
-    for (a, a_idx), (b, b_idx) in zip(prefix_sums_mod_m[:-1], prefix_sums_mod_m[1:]):
+    for (a, a_idx), (b, b_idx) in zip(
+        prefix_sums_mod_m[:-1], prefix_sums_mod_m[1:]
+    ):
         if a_idx > b_idx and b > a:
             max_seen = max((a - b) % m, max_seen)
 

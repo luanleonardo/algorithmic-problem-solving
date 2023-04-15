@@ -1,6 +1,6 @@
 # https://www.hackerrank.com/challenges/ctci-connected-cell-in-a-grid/
 
-from collections import deque, Counter
+from collections import Counter, deque
 from sys import stdin, stdout
 
 
@@ -54,5 +54,7 @@ def maxRegion(grid):
 if __name__ == "__main__":
     rows = int(stdin.readline().strip())
     columns = int(stdin.readline().strip())
-    grid = [list(map(int, stdin.readline().strip().split())) for _ in range(rows)]
+    grid = [
+        list(map(int, stdin.readline().strip().split())) for _ in range(rows)
+    ]
     stdout.write(f"{maxRegion(grid)}\n")

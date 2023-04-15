@@ -1,6 +1,5 @@
 from sys import stdin, stdout
 
-
 if __name__ == "__main__":
 
     input_case_count = 0
@@ -14,7 +13,10 @@ if __name__ == "__main__":
         container_stacks = []
         for new_container in input_case:
 
-            if not container_stacks or new_container > container_stacks[-1][-1]:
+            if (
+                not container_stacks
+                or new_container > container_stacks[-1][-1]
+            ):
                 container_stack = [new_container]
                 container_stacks.append(container_stack)
                 continue
@@ -25,4 +27,6 @@ if __name__ == "__main__":
                     container_stack.append(new_container)
                     break
 
-        stdout.write(f"Case {input_case_count}: {len(container_stacks)}" + "\n")
+        stdout.write(
+            f"Case {input_case_count}: {len(container_stacks)}" + "\n"
+        )

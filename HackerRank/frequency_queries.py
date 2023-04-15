@@ -2,7 +2,6 @@
 
 from collections import Counter, defaultdict
 
-
 q = int(input().rstrip())
 
 cv = Counter()

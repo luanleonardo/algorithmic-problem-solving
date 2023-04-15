@@ -1,6 +1,5 @@
 from sys import stdin, stdout
 
-
 if __name__ == "__main__":
 
     while True:
@@ -13,7 +12,9 @@ if __name__ == "__main__":
         everyone_can_park = True
         for _ in range(N):
 
-            arrival_time, departure_time = map(int, stdin.readline().rstrip().split())
+            arrival_time, departure_time = map(
+                int, stdin.readline().rstrip().split()
+            )
             if not parking_lot:
                 parking_lot.append((arrival_time, departure_time))
                 continue
@@ -34,4 +35,6 @@ if __name__ == "__main__":
 
             everyone_can_park = False
 
-        stdout.write("Sim" + "\n") if everyone_can_park else stdout.write("Nao" + "\n")
+        stdout.write("Sim" + "\n") if everyone_can_park else stdout.write(
+            "Nao" + "\n"
+        )

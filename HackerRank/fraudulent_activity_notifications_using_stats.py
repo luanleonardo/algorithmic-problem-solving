@@ -14,10 +14,16 @@ def get_median(frequency_table, d):
     for expenditure, frequency in enumerate(frequency_table):
         cumulative_frequency += frequency
 
-        if cumulative_frequency >= position_of_the_median and middle_value_1 == 0:
+        if (
+            cumulative_frequency >= position_of_the_median
+            and middle_value_1 == 0
+        ):
             middle_value_1 = expenditure
 
-        if cumulative_frequency >= position_of_the_median + 1 and middle_value_2 == 0:
+        if (
+            cumulative_frequency >= position_of_the_median + 1
+            and middle_value_2 == 0
+        ):
             middle_value_2 = expenditure
             break
 

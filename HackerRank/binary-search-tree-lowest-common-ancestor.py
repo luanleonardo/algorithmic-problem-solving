@@ -46,6 +46,8 @@ if __name__ == "__main__":
             lca = current_node.value
             break
         current_node = (
-            current_node.right if current_node.value < v1 else current_node.left
+            current_node.right
+            if current_node.value < v1
+            else current_node.left
         )
     stdout.write(f"{lca}\n")

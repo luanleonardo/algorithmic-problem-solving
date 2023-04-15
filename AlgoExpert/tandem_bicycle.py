@@ -6,5 +6,9 @@ def tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest):
     redShirtSpeeds.sort()
     blueShirtSpeeds.sort()
     if not fastest:
-        return sum(max(s1, s2) for s1, s2 in zip(redShirtSpeeds, blueShirtSpeeds))
-    return sum(max(s1, s2) for s1, s2 in zip(redShirtSpeeds, blueShirtSpeeds[::-1]))
+        return sum(
+            max(s1, s2) for s1, s2 in zip(redShirtSpeeds, blueShirtSpeeds)
+        )
+    return sum(
+        max(s1, s2) for s1, s2 in zip(redShirtSpeeds, blueShirtSpeeds[::-1])
+    )

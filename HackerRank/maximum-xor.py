@@ -9,6 +9,7 @@ import random
 import re
 import sys
 
+
 # Complete the maxXor function below.
 def maxXor(arr, queries):
     ans = []

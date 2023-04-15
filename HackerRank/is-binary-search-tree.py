@@ -14,8 +14,12 @@ def _check_binary_search_tree(root, min, max):
         return True
     if root.data <= min or max <= root.data:
         return False
-    check_left_tree = _check_binary_search_tree(root.left, min=min, max=root.data)
-    check_right_tree = _check_binary_search_tree(root.right, min=root.data, max=max)
+    check_left_tree = _check_binary_search_tree(
+        root.left, min=min, max=root.data
+    )
+    check_right_tree = _check_binary_search_tree(
+        root.right, min=root.data, max=max
+    )
     return check_left_tree and check_right_tree
 
 

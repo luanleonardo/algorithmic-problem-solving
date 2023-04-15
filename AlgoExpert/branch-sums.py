@@ -39,5 +39,7 @@ def _preorder_branch_sums(node, running_sum, branch_values_sum):
 # O(n) time | O(n) space, n = number of nodes
 def branchSums(root):
     branch_values_sum = []
-    _preorder_branch_sums(node=root, running_sum=0, branch_values_sum=branch_values_sum)
+    _preorder_branch_sums(
+        node=root, running_sum=0, branch_values_sum=branch_values_sum
+    )
     return branch_values_sum

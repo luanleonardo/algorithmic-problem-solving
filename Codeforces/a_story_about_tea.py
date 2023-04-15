@@ -47,7 +47,9 @@ def move_between(a, b, finished):
             a.push(b.pop())
 
 
-def hanoi_iterative_solver(initial_tower, auxiliary_tower, final_tower, num_discs):
+def hanoi_iterative_solver(
+    initial_tower, auxiliary_tower, final_tower, num_discs
+):
 
     while final_tower.size() < num_discs:
 
@@ -55,14 +57,20 @@ def hanoi_iterative_solver(initial_tower, auxiliary_tower, final_tower, num_disc
             move_between(
                 initial_tower, auxiliary_tower, final_tower.size() == num_discs
             )
-            move_between(initial_tower, final_tower, final_tower.size() == num_discs)
+            move_between(
+                initial_tower, final_tower, final_tower.size() == num_discs
+            )
         else:
-            move_between(initial_tower, final_tower, final_tower.size() == num_discs)
+            move_between(
+                initial_tower, final_tower, final_tower.size() == num_discs
+            )
             move_between(
                 initial_tower, auxiliary_tower, final_tower.size() == num_discs
             )
 
-        move_between(auxiliary_tower, final_tower, final_tower.size() == num_discs)
+        move_between(
+            auxiliary_tower, final_tower, final_tower.size() == num_discs
+        )
 
 
 def hanoi_initialize(num_discs, towers_name):
@@ -99,8 +107,12 @@ if __name__ == "__main__":
 
         # As any solution will be accepted, we make the most of redundant trips.
         while num_extras_trips > 1:
-            move_between(port_portugal, port_china, port_england.size() == num_boats)
-            move_between(port_portugal, port_china, port_england.size() == num_boats)
+            move_between(
+                port_portugal, port_china, port_england.size() == num_boats
+            )
+            move_between(
+                port_portugal, port_china, port_england.size() == num_boats
+            )
             num_extras_trips -= 2
 
         # If it is necessary to make one more trip, it is done so that the next
@@ -110,26 +122,38 @@ if __name__ == "__main__":
 
             if num_boats % 2 == 0:
                 move_between(
-                    port_portugal, port_england, port_england.size() == num_boats
+                    port_portugal,
+                    port_england,
+                    port_england.size() == num_boats,
                 )
-                move_between(port_england, port_china, port_england.size() == num_boats)
                 move_between(
-                    port_portugal, port_england, port_england.size() == num_boats
+                    port_england, port_china, port_england.size() == num_boats
+                )
+                move_between(
+                    port_portugal,
+                    port_england,
+                    port_england.size() == num_boats,
                 )
             else:
                 move_between(
                     port_portugal, port_china, port_england.size() == num_boats
                 )
-                move_between(port_china, port_england, port_england.size() == num_boats)
+                move_between(
+                    port_china, port_england, port_england.size() == num_boats
+                )
                 move_between(
                     port_portugal, port_china, port_england.size() == num_boats
                 )
 
-            move_between(port_china, port_england, port_england.size() == num_boats)
+            move_between(
+                port_china, port_england, port_england.size() == num_boats
+            )
 
         # We continue to obtain the optimal itinerary, given by the iterative algorithm
         # that solves the problem of the Hanoi tower.
-        hanoi_iterative_solver(port_portugal, port_china, port_england, num_boats)
+        hanoi_iterative_solver(
+            port_portugal, port_china, port_england, num_boats
+        )
     else:
         # Impossible to solve
         stdout.write("N" + "\n")

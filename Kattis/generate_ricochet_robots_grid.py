@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 import random
 from collections import defaultdict
 from enum import Enum
-from typing import NamedTuple, List
 from sys import stdin, stdout
+from typing import List, NamedTuple
 
 
 class Cell(str, Enum):
@@ -65,7 +66,9 @@ class FactoryFloor:
                     self.grid[cl.row][cl.column] = robot_number[str(i)]
                     break
 
-    def _randomly_fill_walls(self, rows: int, columns: int, sparseness: float) -> None:
+    def _randomly_fill_walls(
+        self, rows: int, columns: int, sparseness: float
+    ) -> None:
         for row in range(rows):
             for column in range(columns):
                 # 20% das células do grid serão bloqueadas
@@ -162,11 +165,15 @@ if __name__ == "__main__":
     num_rows = 5  # random.randint(4, 9)
     num_columns = 5  # random.randint(5, 9)
 
-    floor: FactoryFloor = FactoryFloor(n=num_robots, rows=num_rows, columns=num_columns)
+    floor: FactoryFloor = FactoryFloor(
+        n=num_robots, rows=num_rows, columns=num_columns
+    )
 
     output: str = ""
     for row in floor.grid:
         output += "".join([c.value for c in row]) + "\n"
 
-    stdout.write(" ".join([str(num_robots), str(num_rows), str(num_columns)]) + "\n")
+    stdout.write(
+        " ".join([str(num_robots), str(num_rows), str(num_columns)]) + "\n"
+    )
     stdout.write(output)

@@ -17,6 +17,7 @@ class SinglyLinkedListNode:
             return
         self.next.insertAtEnd(data)
 
+
 # O(m + n) time | O(1) space
 def _mergeLists(head1, head2):
     if head1.next is None:
@@ -25,7 +26,9 @@ def _mergeLists(head1, head2):
 
     prev = head1
     curr, currMax = (
-        (head1.next, head2) if head1.next.data <= head2.data else (head2, head1.next)
+        (head1.next, head2)
+        if head1.next.data <= head2.data
+        else (head2, head1.next)
     )
     prev.next = curr
 

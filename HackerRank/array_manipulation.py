@@ -27,7 +27,9 @@ class SegmentTree:
         mid = (l + r) // 2
         self._build(self._left(node), l, mid)
         self._build(self._right(node), mid + 1, r)
-        self.tree[node] = max(self.tree[self._left(node)], self.tree[self._right(node)])
+        self.tree[node] = max(
+            self.tree[self._left(node)], self.tree[self._right(node)]
+        )
 
     def _lazy_propagation(self, node, tl, tr):
         self.tree[node] += self.lazy[node]
@@ -54,7 +56,9 @@ class SegmentTree:
         mid = (tl + tr) // 2
         self._update(self._left(node), tl, mid, l, r, v)
         self._update(self._right(node), mid + 1, tr, l, r, v)
-        self.tree[node] = max(self.tree[self._left(node)], self.tree[self._right(node)])
+        self.tree[node] = max(
+            self.tree[self._left(node)], self.tree[self._right(node)]
+        )
 
     def update(self, l, r, v):
         return self._update(0, 0, self.n - 1, l, r, v)
@@ -93,7 +97,9 @@ if __name__ == "__main__":
 
     n, m = tuple(map(int, stdin.readline().strip().split(" ")))
 
-    queries = [tuple(map(int, stdin.readline().strip().split(" "))) for _ in range(m)]
+    queries = [
+        tuple(map(int, stdin.readline().strip().split(" "))) for _ in range(m)
+    ]
 
     result = arrayManipulation(n, queries)
 

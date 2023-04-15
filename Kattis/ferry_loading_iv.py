@@ -1,6 +1,5 @@
 from sys import stdin, stdout
 
-
 if __name__ == "__main__":
 
     c = int(stdin.readline().rstrip())
@@ -24,7 +23,10 @@ if __name__ == "__main__":
                 ferry["deck"] = []
                 while river_bank[bank]:
 
-                    if sum(ferry["deck"]) + river_bank[bank][0] <= ferry["size"]:
+                    if (
+                        sum(ferry["deck"]) + river_bank[bank][0]
+                        <= ferry["size"]
+                    ):
                         ferry["deck"].append(river_bank[bank].pop(0))
                     else:
                         break

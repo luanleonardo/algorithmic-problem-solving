@@ -1,6 +1,9 @@
 import pytest
 
-from AlgoExpert.evaluate_expression_tree import BinaryTree, evaluateExpressionTree
+from AlgoExpert.evaluate_expression_tree import (
+    BinaryTree,
+    evaluateExpressionTree,
+)
 
 
 @pytest.fixture

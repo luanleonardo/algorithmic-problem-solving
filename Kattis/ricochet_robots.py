@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from collections import deque
 from sys import stdin, stdout
-from typing import List, NamedTuple, Optional, Callable, TypeVar, Generic
+from typing import Callable, Generic, List, NamedTuple, Optional, TypeVar
 
 T = TypeVar("T")
 
@@ -33,22 +33,30 @@ def find_all_available_locations(
         available_locations: List[Location] = []
 
         # find available locations on the left
-        left_locations = find_left_locations(current_robot_location, robot_location)
+        left_locations = find_left_locations(
+            current_robot_location, robot_location
+        )
         if left_locations:
             available_locations.append(left_locations.pop())
 
         # find available locations above
-        above_locations = find_above_locations(current_robot_location, robot_location)
+        above_locations = find_above_locations(
+            current_robot_location, robot_location
+        )
         if above_locations:
             available_locations.append(above_locations.pop())
 
         # find available locations on the right
-        right_locations = find_right_locations(current_robot_location, robot_location)
+        right_locations = find_right_locations(
+            current_robot_location, robot_location
+        )
         if right_locations:
             available_locations.append(right_locations.pop())
 
         # find available locations below
-        below_locations = find_below_locations(current_robot_location, robot_location)
+        below_locations = find_below_locations(
+            current_robot_location, robot_location
+        )
         if below_locations:
             available_locations.append(below_locations.pop())
 
@@ -65,7 +73,9 @@ def find_below_locations(current_robot_location, robot_location):
             or grid[grid_row][current_robot_location.column] == cell["WALL"]
         ):
             break
-        below_locations.append(Location(grid_row, current_robot_location.column))
+        below_locations.append(
+            Location(grid_row, current_robot_location.column)
+        )
     return below_locations
 
 
@@ -77,7 +87,9 @@ def find_right_locations(current_robot_location, robot_location):
             or grid[current_robot_location.row][grid_column] == cell["WALL"]
         ):
             break
-        right_locations.append(Location(current_robot_location.row, grid_column))
+        right_locations.append(
+            Location(current_robot_location.row, grid_column)
+        )
     return right_locations
 
 
@@ -89,7 +101,9 @@ def find_above_locations(current_robot_location, robot_location):
             or grid[grid_row][current_robot_location.column] == cell["WALL"]
         ):
             break
-        above_locations.append(Location(grid_row, current_robot_location.column))
+        above_locations.append(
+            Location(grid_row, current_robot_location.column)
+        )
     return above_locations
 
 
@@ -101,7 +115,9 @@ def find_left_locations(current_robot_location, robot_location):
             or grid[current_robot_location.row][grid_column] == cell["WALL"]
         ):
             break
-        left_locations.append(Location(current_robot_location.row, grid_column))
+        left_locations.append(
+            Location(current_robot_location.row, grid_column)
+        )
     return left_locations
 
 
@@ -217,7 +233,9 @@ if __name__ == "__main__":
             grid[r][c] = row[c]
 
     # Search for solution using breadth-first search algorithm
-    solution = bfs(robots_initial_location, test_target, find_all_possible_locations)
+    solution = bfs(
+        robots_initial_location, test_target, find_all_possible_locations
+    )
     if solution is None:
         stdout.write("NO SOLUTION" + "\n")
     else:

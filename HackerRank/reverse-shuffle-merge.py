@@ -26,7 +26,10 @@ def reverseShuffleMerge(s):
             if char < min_char:
                 min_char = char
                 min_index = index
-            if remaining_dict[char] - 1 < required_dict[char] - added_dict[char]:
+            if (
+                remaining_dict[char] - 1
+                < required_dict[char] - added_dict[char]
+            ):
                 while index > min_index:
                     index -= 1
                     char = s[index]

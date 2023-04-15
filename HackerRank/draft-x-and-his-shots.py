@@ -53,7 +53,9 @@ def intervals_containing(t, p):
 if __name__ == "__main__":
     N, M = map(int, stdin.readline().strip().split())
 
-    intervals = [tuple(map(int, stdin.readline().strip().split())) for _ in range(N)]
+    intervals = [
+        tuple(map(int, stdin.readline().strip().split())) for _ in range(N)
+    ]
     query_intervals = [
         tuple(map(int, stdin.readline().strip().split())) for _ in range(M)
     ]

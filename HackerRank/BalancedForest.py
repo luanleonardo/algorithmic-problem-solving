@@ -1,5 +1,5 @@
-from random import randrange
 import sys
+from random import randrange
 
 sys.setrecursionlimit(10**5)
 
@@ -90,17 +90,23 @@ class WeightedTree(UndirectedGraph):
 
             for target_w in (tw - first_cw * 2, first_cw):
                 second_idx = bin_search(
-                    self.sorted_nodes, lambda u: self.cum_weights[u] >= target_w
+                    self.sorted_nodes,
+                    lambda u: self.cum_weights[u] >= target_w,
                 )
                 if second_idx:
                     while (
                         second_idx < self.size
-                        and self.cum_weights[self.sorted_nodes[second_idx]] == target_w
+                        and self.cum_weights[self.sorted_nodes[second_idx]]
+                        == target_w
                     ):
                         second = self.sorted_nodes[second_idx]
-                        is_child = label1 < self.labels[second] <= last_child_label
                         is_child = (
-                            is_child if not self.inverted[first] else not is_child
+                            label1 < self.labels[second] <= last_child_label
+                        )
+                        is_child = (
+                            is_child
+                            if not self.inverted[first]
+                            else not is_child
                         )
                         if not is_child and self.labels[second] != label1:
                             return first_cw * 3 - tw
