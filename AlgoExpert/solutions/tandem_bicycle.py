@@ -1,7 +1,7 @@
 # https://www.algoexpert.io/questions/tandem-bicycle
 
 
-# O(n log n) time | O(1) space, n = number of riders
+# O(n log n) time | O(1) space, n = number of bicycles
 def tandemBicycle(redShirtSpeeds, blueShirtSpeeds, fastest):
     redShirtSpeeds.sort()
     blueShirtSpeeds.sort()
