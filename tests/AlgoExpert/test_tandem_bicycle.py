@@ -1,6 +1,6 @@
 import pytest
 
-from AlgoExpert.solutions.tandem_bicycle import tandemBicycle
+from AlgoExpert.tandem_bicycle import tandemBicycle
 
 
 @pytest.mark.parametrize("fastest,expected", [(True, 32), (False, 25)])
