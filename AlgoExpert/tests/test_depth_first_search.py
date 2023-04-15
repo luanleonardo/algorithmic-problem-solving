@@ -1,6 +1,6 @@
 import pytest
 
-from AlgoExpert.depth_first_search import Node
+from AlgoExpert.solutions.depth_first_search import Node
 
 
 @pytest.fixture

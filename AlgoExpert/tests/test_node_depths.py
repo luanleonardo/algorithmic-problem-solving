@@ -1,6 +1,6 @@
 import pytest
 
-from AlgoExpert.node_depths import BinaryTree, nodeDepths
+from AlgoExpert.solutions.node_depths import BinaryTree, nodeDepths
 
 
 @pytest.fixture
