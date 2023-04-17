@@ -1,5 +1,5 @@
 from collections import deque, namedtuple
-from sys import stdin, stdout
+from sys import stdout
 
 
 # O(num_buildings) time | O(num_buildings) space

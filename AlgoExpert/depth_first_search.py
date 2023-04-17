@@ -1,5 +1,4 @@
 # https://www.algoexpert.io/questions/depth-first-search
-from collections import deque
 
 
 class Node:
