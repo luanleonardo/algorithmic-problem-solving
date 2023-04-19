@@ -3,7 +3,6 @@
 
 from collections import defaultdict
 from heapq import heappop, heappush
-from sys import stdin, stdout
 
 
 def build_graph(edges):
@@ -47,15 +46,3 @@ def prims(n, edges, start):
                 heappush(H, (key[y], y))
 
     return sum(graph[u][v] for u, v in T), T
-
-
-if __name__ == "__main__":
-    n, m = map(int, stdin.readline().strip().split())
-
-    edges = []
-    for _ in range(m):
-        edges.append(list(map(int, stdin.readline().strip().split())))
-    start = int(stdin.readline().strip())
-
-    min_cost, mst = prims(n=n, edges=edges, start=start)
-    stdout.write(f"{min_cost}\n")
