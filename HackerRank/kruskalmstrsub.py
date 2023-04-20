@@ -1,4 +1,8 @@
+# https://www.hackerrank.com/challenges/kruskalmstrsub/problem?isFullScreen=false#
+
 from collections import defaultdict
+
+# from sys import stdin, stdout
 
 
 class UnionFind:
@@ -37,12 +41,22 @@ def kruskal(graph):
             edges.append((graph[u][v], u, v))
     edges.sort()
     uf = UnionFind(len(graph))
-    min_cost = 0
+    cost = 0
     min_span_tree = []
     for w, u, v in edges:
         if uf.find(u) == uf.find(v):
             continue
         uf.union(u, v)
-        min_cost += w
+        cost += w
         min_span_tree.append((u, v))
-    return min_cost, min_span_tree
+    return cost, min_span_tree
+
+
+# if __name__ == "__main__":
+#     n, m = map(int, stdin.readline().strip().split())
+#     edges = [
+#         list(map(int, stdin.readline().strip().split())) for _ in range(m)
+#     ]
+#     graph = build_graph(edges)
+#     min_cost, _ = kruskal(graph=graph)
+#     stdout.write(f"{min_cost}\n")
