@@ -37,10 +37,12 @@ def kruskal(graph):
             edges.append((graph[u][v], u, v))
     edges.sort()
     uf = UnionFind(len(graph))
-    mst = []
+    min_cost = 0
+    min_span_tree = []
     for w, u, v in edges:
         if uf.find(u) == uf.find(v):
             continue
         uf.union(u, v)
-        mst.append((u, v))
-    return sum(graph[u][v] for u, v in mst), mst
+        min_cost += w
+        min_span_tree.append((u, v))
+    return min_cost, min_span_tree
