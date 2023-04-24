@@ -7,8 +7,7 @@ from heapq import heappop, heappush
 
 def dijkstra(graph, start):
     processed = set()
-    distances = [float("inf")] * len(graph)
-    distances[start] = 0
+    distances = [float("inf") if node != start else 0 for node in graph]
     heap = [(distances[start], start)]
     while heap:
         dist_node, node = heappop(heap)
