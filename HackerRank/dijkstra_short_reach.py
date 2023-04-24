@@ -1,23 +1,22 @@
 # https://www.hackerrank.com/challenges/dijkstrashortreach/problem?isFullScreen=false
 
-# from collections import defaultdict
 from heapq import heappop, heappush
 # from sys import stdin, stdout
 
 
 def dijkstra(graph, start):
-    processed = set()
+    processed = [False] * len(graph)
     distances = [float("inf") if node != start else 0 for node in graph]
     heap = [(distances[start], start)]
     while heap:
         dist_node, node = heappop(heap)
-        if node in processed:
-            continue
-        for neighbor in graph[node]:
-            dist_neighbor = dist_node + graph[node][neighbor]
-            if dist_neighbor < distances[neighbor]:
-                distances[neighbor] = dist_neighbor
-                heappush(heap, (distances[neighbor], neighbor))
+        if not processed[node]:
+            processed[node] = True
+            for neighbor in graph[node]:
+                dist_neighbor = dist_node + graph[node][neighbor]
+                if dist_neighbor < distances[neighbor]:
+                    distances[neighbor] = dist_neighbor
+                    heappush(heap, (distances[neighbor], neighbor))
     return distances
 
 
@@ -25,9 +24,7 @@ def dijkstra(graph, start):
 #     t = int(stdin.readline().strip())
 #     for i in range(t):
 #         n, m = map(int, stdin.readline().strip().split())
-#         g = defaultdict(dict)
-#         for u in range(n):
-#             g[u] = dict()
+#         g = {u: dict() for u in range(n)}
 #         for _ in range(m):
 #             u, v, w = map(int, stdin.readline().strip().split())
 #             u, v = u - 1, v - 1
