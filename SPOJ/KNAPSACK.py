@@ -1,4 +1,6 @@
-from sys import stdin, stdout
+# https://www.spoj.com/problems/KNAPSACK/
+
+# from sys import stdin, stdout
 
 
 def knapsack(num_items, items_weights, items_values, knapsack_capacity):
