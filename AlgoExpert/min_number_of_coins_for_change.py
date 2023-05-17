@@ -1,6 +1,7 @@
 # https://www.algoexpert.io/questions/min-number-of-coins-for-change
 
 
+# O(nR) time | O(nR) space, n = number of denominations, R = target money
 def min_coin_change(x, R):
     n = len(x)
     dp = [[float("inf") for _ in range(R + 1)] for _ in range(n)]
