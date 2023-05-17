@@ -12,8 +12,8 @@ def min_coin_change(x, R):
 
     for i in range(1, n):
         for m in range(R + 1):
-            if x[i] <= m and dp[i][m - x[i]] + 1 < dp[i - 1][m]:
-                dp[i][m] = dp[i][m - x[i]] + 1
+            if x[i] <= m:
+                dp[i][m] = min(dp[i - 1][m], dp[i][m - x[i]] + 1)
             else:
                 dp[i][m] = dp[i - 1][m]
 
